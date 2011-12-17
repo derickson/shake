@@ -1,0 +1,149 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta http-equiv="Generator" content="xquerydoc - https://github.com/xquery/xquerydoc"/><title>xqDoc - </title><style type="text/css">
+          body {
+          font-family: Helvetica;
+          padding: 0.5em  1em;
+          }
+          pre {
+          font-family: Inconsolata, Consolas, monospace;
+          }
+          ol.results {
+          padding-left: 0;
+          }
+          .footer {
+          text-align:right;
+          border-top: solid 4px;
+          padding: 0.25em 0.5em;
+          font-size: 85%;
+          color: #999;
+          }
+          li.result {
+          list-style-position: inside;
+          list-style: none;
+          height:140px;
+          }
+          h2 {
+          display: inline-block;
+          margin: 0;
+          }
+
+          h2 a,
+          .result h3 a {
+          text-decoration: inherit;
+          color: inherit;
+          }
+          h3{
+	  font-size: 140%;
+	  background-color: #aaa;
+	  border-bottom: 1px solid #000;
+	  width: 100%;
+	  }
+          h4{
+	  font-size: 100%;
+	  background-color: #ddd;
+	  width: 90%;
+	  }
+
+          .namespace {
+          color: #999;
+          }
+          .namespace:before {
+          content: "{";
+          }
+          .namespace:after {
+          content: "}";
+          }
+          table{
+          width:75%;
+          float:right;
+          }
+          td {
+          height:100px;
+          width:50%;
+          vertical-align:text-top;
+          }
+        </style><script src="lib/prettify.js" type="text/javascript"> </script><script src="lib/lang-xq.js" type="text/javascript"> </script><link rel="stylesheet" type="text/css" href="lib/prettify.css"/></head><body class="home"><div style="text-align:right;"><a href="index.html">XQuery API index</a></div><div id="main"><h1><span class="namespace">http://framework/view/v-mob</span>  library module </h1><p>s HTML5 Template using JQuery Mobile XQuery adaptation Public Domain. jQuery and jQuery Mobile: MIT/GPL license </p><p>Author:  Dave  </p>
+    See also:
+    Front2BackDev<p>Version:  1.1 </p><div id="variables"><h3>Variables</h3></div><div id="functions"><h3>Functions</h3><div id="func_render_2"><h4><pre class="prettyprint lang-xq"><u>Function</u>: render(
+    $title as xs:string,
+    $html as node()*) as  item()*</pre></h4><p>  JQuery Mobile Output Template  </p><h5>Params</h5><ul><li>title as  xs:string -- The html head title of the page</li><li>html as  node()* -- HTML5 nodes to put in the body</li></ul><h5>Returns</h5><ul><li> item()*: HTML5 formatted data</li></ul></div></div><div><h3>Original Source Code</h3><pre class="prettyprint lang-xq">xquery version "1.0-ml";
+
+(:~s
+ HTML5 Template using JQuery Mobile
+ XQuery adaptation Public Domain.
+   jQuery and jQuery Mobile: MIT/GPL license
+ @author Dave 
+ @see &lt;a href="http://www.front2backdev.com"&gt;Front2BackDev&lt;/a&gt;
+ @version 1.1
+:)
+
+
+module namespace v-mob = "http://framework/view/v-mob";
+
+(:
+ Stick this at the top of any module that generates HTML so that
+ empty tags don't get truncated to non-empty tags
+:)
+declare option xdmp:output "method=html";
+
+(:~
+: JQuery Mobile Output Template
+: @param title -- The html head title of the page
+: @param html  -- HTML5 nodes to put in the body
+: @return HTML5 formatted data
+:)
+declare function v-mob:render(
+    $title as xs:string,
+    $html as node()*
+) as item()* {
+
+xdmp:set-response-content-type("text/html"),
+'&lt;!DOCTYPE html&gt;',
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;{$title}&lt;/title&gt;
+        &lt;!--
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt; 
+        &lt;link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" /&gt;
+        &lt;script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"&gt;&lt;/script&gt;
+        --&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+        
+        &lt;link href='http://fonts.googleapis.com/css?family=Aguafina+Script|Vast+Shadow' rel='stylesheet' type='text/css'/&gt;
+        &lt;link rel="stylesheet" href="/css/mobshake-jm.min.css"/&gt;
+        &lt;link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile.structure-1.0rc2.min.css"/&gt;
+        
+        &lt;link rel="stylesheet" href="/css/mobshake.css" /&gt;
+        
+        &lt;script src="http://code.jquery.com/jquery-1.6.4.min.js"&gt;&lt;/script&gt;
+        &lt;script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt; 
+
+        &lt;div id="page" data-role="page" data-theme="a"  data-dividertheme="a"&gt;
+
+            &lt;div data-role="header"&gt;
+                &lt;a data-rel="back"
+                   data-icon="back"
+                   data-iconpos="notext"
+                   data-transition="slide"
+                   data-direction="reverse"&gt;Back&lt;/a&gt;
+                &lt;h1&gt;{$title}&lt;/h1&gt;
+                &lt;a href="/"
+                   data-icon="home"
+                   data-iconpos="notext"
+                   data-transition="fade"&gt;Home&lt;/a&gt;
+            &lt;/div&gt;&lt;!-- /header --&gt;
+
+            &lt;div id="mobshake" data-role="content"&gt;
+                {$html}
+            &lt;/div&gt;&lt;!-- /content --&gt;
+
+        &lt;/div&gt;&lt;!-- /page --&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;
+};</pre></div><br/><div class="footer"><p style="text-align:right"><i/> |
+          generated by xquerydoc <a href="https://github.com/xquery/xquerydoc" target="xquerydoc">https://github.com/xquery/xquerydoc</a></p></div></div><script type="application/javascript">
+	  window.onload = function(){ prettyPrint(); }
+	</script></body></html>

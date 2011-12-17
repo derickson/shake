@@ -1,0 +1,32 @@
+/* make search link wrap correctly even though it is a link */
+.searchlink { style="white-space:normal;" }
+
+/* center the home page */
+#homepage { width:auto; text-align:center; }
+
+/* Header fonts from Google fonts */
+h1 { font-family: 'Aguafina Script', cursive; font-size:1.2em; }
+#homepage h1 { font-family: 'Aguafina Script', cursive; font-size:3em; }
+#mobshake h2, #mobshake h3 { font-family: 'Vast Shadow', cursive; }
+
+/* Small screens, for reference iPhone1 was 320x480 */
+@media only screen and (max-width: 300px) {
+	.ui-page { background:#e3b778 url(../img/shaketranstiny.png) no-repeat top center fixed; }
+	#homepage h1 { font-family: 'Aguafina Script', cursive; font-size:1.3em; }
+	#play-search{ margin-top:160px; }
+}
+
+/* Larger phones and iPad in portrait view (768x1024) */
+@media only screen and (min-width:301px) and (max-width:789px){
+	.ui-page { background:#e3b778 url(../img/shaketranssmall.png) no-repeat top center fixed; }
+	#homepage h1 { font-family: 'Aguafina Script', cursive; font-size:2em; }
+	#play-search{ margin-top:250px;	}
+
+}
+
+/* Desktop computers and tablets in Landscape mode */
+@media only screen and (min-width: 790px) {
+	.ui-page { background:#e3b778 url(../img/shaketransbig.png) no-repeat top right fixed; }
+}
+
+
