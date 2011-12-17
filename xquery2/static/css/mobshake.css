@@ -1,6 +1,3 @@
-/* make search link wrap correctly even though it is a link */
-.searchlink { style="white-space:normal;" }
-
 /* center the home page */
 #homepage { width:auto; text-align:center; }
 

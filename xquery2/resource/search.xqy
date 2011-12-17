@@ -106,7 +106,7 @@ declare function local:transform-results($results as element(search:result)*) as
                 
                 (: This list item is a link to the speech in the /play... REST link :)
                 <li>
-                    <a class="searchlink" 
+                    <a style="white-space:normal;" 
                        href="/play/{$id}/act/{$act}/scene/{$scene}/speech/{$speech}">
                         {
                             <h3>{$s/SPEAKER/node()}</h3>,
